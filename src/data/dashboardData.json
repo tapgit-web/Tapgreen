@@ -1,0 +1,185 @@
+{
+  "users": [
+    {
+      "email": "admin@tapgreen.com",
+      "password": "admin",
+      "role": "admin",
+      "assignedLocationId": null
+    },
+    {
+      "email": "manager1@tapgreen.com",
+      "password": "site1",
+      "role": "manager",
+      "assignedLocationId": 1
+    },
+    {
+      "email": "manager2@tapgreen.com",
+      "password": "site2",
+      "role": "manager",
+      "assignedLocationId": 2
+    },
+    {
+      "email": "manager3@tapgreen.com",
+      "password": "site3",
+      "role": "manager",
+      "assignedLocationId": 3
+    },
+    {
+      "email": "manager4@tapgreen.com",
+      "password": "site4",
+      "role": "manager",
+      "assignedLocationId": 4
+    }
+  ],
+  "energyData": [
+    { "name": "Mon", "electricity": 4000, "gas": 2400, "fuel": 2400 },
+    { "name": "Tue", "electricity": 3000, "gas": 1398, "fuel": 2210 },
+    { "name": "Wed", "electricity": 2000, "gas": 9800, "fuel": 2290 },
+    { "name": "Thu", "electricity": 2780, "gas": 3908, "fuel": 2000 },
+    { "name": "Fri", "electricity": 1890, "gas": 4800, "fuel": 2181 },
+    { "name": "Sat", "electricity": 2390, "gas": 3800, "fuel": 2500 },
+    { "name": "Sun", "electricity": 3490, "gas": 4300, "fuel": 2100 }
+  ],
+  "carbonFactors": {
+    "Electricity": 0.45,
+    "Gas": 1.85,
+    "Fuel": 2.68,
+    "EV_Trip": 0.8,
+    "Diesel_Trip": 5.2,
+    "CNG_Trip": 3.8
+  },
+  "locations": [
+    {
+      "id": 1,
+      "name": "Madurai Data HQ",
+      "status": "Optimal",
+      "usage": "High",
+      "efficiency": 94,
+      "units": [
+        {
+          "id": "u1",
+          "name": "Server Complex Alpha",
+          "status": "Active",
+          "machines": [
+            { "id": "m1", "name": "Rack 01-A", "load": 82, "temp": 24, "energy": 450, "production": 440, "energyType": "Electricity", "status": "Active", "maintenanceLimits": { "load": 80, "temp": 30, "mismatch": 0.1 } },
+            { "id": "m2", "name": "Rack 02-A", "load": 75, "temp": 25, "energy": 380, "production": 390, "energyType": "Electricity", "status": "Active", "maintenanceLimits": { "load": 80, "temp": 30, "mismatch": 0.1 } },
+            { "id": "m3", "name": "Rack 03-A", "load": 88, "temp": 26, "energy": 510, "production": 480, "energyType": "Electricity", "status": "Active", "maintenanceLimits": { "load": 80, "temp": 30, "mismatch": 0.1 } }
+          ]
+        },
+        {
+          "id": "u2",
+          "name": "Cooling System",
+          "status": "Active",
+          "machines": [
+            { "id": "m11", "name": "Primary Chiller", "load": 45, "temp": 18, "energy": 1200, "production": 1150, "energyType": "Electricity", "status": "Active", "maintenanceLimits": { "load": 60, "temp": 25, "mismatch": 0.15 } },
+            { "id": "m12", "name": "Backup Generator", "load": 12, "temp": 32, "energy": 85, "production": 100, "energyType": "Fuel", "status": "Standby", "maintenanceLimits": { "load": 90, "temp": 80, "mismatch": 0.2 } }
+          ]
+        }
+      ],
+      "vehicles": [
+        { "id": "v1", "name": "EV Delivery #01", "type": "Electric", "level": 88, "status": "Charging", "trips": 12 },
+        { "id": "v2", "name": "Truck Delta-4", "type": "Diesel", "level": 42, "status": "On Route", "trips": 8 },
+        { "id": "v3", "name": "Light Van #09", "type": "Electric", "level": 65, "status": "Service", "trips": 4 }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Madurai Tech Park",
+      "status": "Warning",
+      "usage": "Peak",
+      "efficiency": 78,
+      "units": [
+        {
+          "id": "u3",
+          "name": "Tower 1 - IT",
+          "status": "High Load",
+          "machines": [
+            { "id": "m21", "name": "Main Server Bay", "load": 92, "temp": 28, "energy": 840, "production": 800, "energyType": "Electricity", "status": "High Load", "maintenanceLimits": { "load": 85, "temp": 35, "mismatch": 0.1 } },
+            { "id": "m22", "name": "Network Switch A", "load": 65, "temp": 24, "energy": 120, "production": 130, "energyType": "Electricity", "status": "Active", "maintenanceLimits": { "load": 70, "temp": 30, "mismatch": 0.05 } }
+          ]
+        },
+        {
+          "id": "u4",
+          "name": "HVAC Unit",
+          "status": "Active",
+          "machines": [
+            { "id": "m31", "name": "Central AC", "load": 74, "temp": 22, "energy": 950, "production": 920, "energyType": "Electricity", "status": "Active", "maintenanceLimits": { "load": 80, "temp": 25, "mismatch": 0.15 } },
+            { "id": "m32", "name": "Gas Boiler", "load": 30, "temp": 65, "energy": 450, "production": 460, "energyType": "Gas", "status": "Active", "maintenanceLimits": { "load": 50, "temp": 85, "mismatch": 0.2 } }
+          ]
+        }
+      ],
+      "vehicles": [
+        { "id": "v4", "name": "Staff Shuttle #1", "type": "Electric", "level": 94, "status": "Active", "trips": 22 },
+        { "id": "v5", "name": "Maintenance EV", "type": "Electric", "level": 25, "status": "Warning", "trips": 6 }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Madurai Logistics Hub",
+      "status": "Optimal",
+      "usage": "Low",
+      "efficiency": 91,
+      "units": [
+        {
+          "id": "u5",
+          "name": "Warehouse A",
+          "status": "Active",
+          "machines": [
+            { "id": "m41", "name": "Conveyor Alpha", "load": 34, "temp": 26, "energy": 240, "production": 230, "energyType": "Electricity", "status": "Active", "maintenanceLimits": { "load": 60, "temp": 40, "mismatch": 0.1 } },
+            { "id": "m42", "name": "Sorting Arm 01", "load": 80, "temp": 24, "energy": 180, "production": 120, "energyType": "Electricity", "status": "Active", "maintenanceLimits": { "load": 75, "temp": 35, "mismatch": 0.1 } }
+          ]
+        },
+        {
+          "id": "u6",
+          "name": "Warehouse B",
+          "status": "Active",
+          "machines": [
+            { "id": "m51", "name": "Cold Store Chiller", "load": 58, "temp": 4, "energy": 650, "production": 640, "energyType": "Electricity", "status": "Active", "maintenanceLimits": { "load": 70, "temp": 10, "mismatch": 0.1 } },
+            { "id": "m52", "name": "Gas Forklift Station", "load": 15, "temp": 20, "energy": 320, "production": 330, "energyType": "Gas", "status": "Active", "maintenanceLimits": { "load": 40, "temp": 35, "mismatch": 0.2 } }
+          ]
+        }
+      ],
+      "vehicles": [
+        { "id": "v6", "name": "Heavy Hauler #A", "type": "Diesel", "level": 75, "status": "Loading", "trips": 2 },
+        { "id": "v7", "name": "Fleet Van #22", "type": "CNG", "level": 82, "status": "Active", "trips": 15 },
+        { "id": "v8", "name": "Fleet Van #24", "type": "CNG", "level": 68, "status": "On Route", "trips": 18 },
+        { "id": "v9", "name": "Support Unit #1", "type": "Electric", "level": 100, "status": "Standby", "trips": 5 }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Madurai R&D Center",
+      "status": "Critical",
+      "usage": "Extreme",
+      "efficiency": 52,
+      "units": [
+        {
+          "id": "u7",
+          "name": "Lab 1 - Physics",
+          "status": "Overload",
+          "machines": [
+            { "id": "m61", "name": "Cleanroom HVAC", "load": 98, "temp": 20, "energy": 1100, "production": 1050, "energyType": "Electricity", "status": "Overload", "maintenanceLimits": { "load": 90, "temp": 25, "mismatch": 0.05 } },
+            { "id": "m62", "name": "Liquid Nitrogen Pump", "load": 45, "temp": -196, "energy": 150, "production": 160, "energyType": "Electricity", "status": "Active", "maintenanceLimits": { "load": 70, "temp": -180, "mismatch": 0.3 } }
+          ]
+        },
+        {
+          "id": "u8",
+          "name": "Lab 2 - Electrical",
+          "status": "Warning",
+          "machines": [
+            { "id": "m71", "name": "High Voltage Test", "load": 88, "temp": 45, "energy": 1400, "production": 1300, "energyType": "Electricity", "status": "Warning", "maintenanceLimits": { "load": 80, "temp": 50, "mismatch": 0.1 } },
+            { "id": "m72", "name": "Emergency Diesel Gen", "load": 0, "temp": 20, "energy": 0, "production": 0, "energyType": "Fuel", "status": "Off", "maintenanceLimits": { "load": 100, "temp": 95, "mismatch": 0.1 } }
+          ]
+        }
+      ],
+      "vehicles": [
+        { "id": "v10", "name": "Precision Van", "type": "Electric", "level": 15, "status": "Low Battery", "trips": 3 }
+      ]
+    }
+  ],
+  "pieData": [
+    { "name": "Electricity", "value": 45, "color": "#4ADE80" },
+    { "name": "Gas", "value": 30, "color": "#22D3EE" },
+    { "name": "Fuel", "value": 25, "color": "#F59E0B" }
+  ]
+}
