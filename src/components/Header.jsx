@@ -1,16 +1,24 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Sun, Moon, Bell, User, LogOut } from 'lucide-react';
+import { Search, Sun, Moon, Bell, User, LogOut, Menu } from 'lucide-react';
 
 const Header = ({ 
-  searchQuery, setSearchQuery, theme, toggleTheme, alerts, onLogout, userRole 
+  searchQuery, setSearchQuery, theme, toggleTheme, alerts, onLogout, userRole, isSidebarOpen, setIsSidebarOpen
 }) => {
   const navigate = useNavigate();
 
   return (
-    <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
-      <div style={{ position: 'relative', width: '400px' }}>
-        <Search size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
+    <header>
+      <div className="flex w-full gap-1">
+        <button 
+          className="glass-card mobile-nav-toggle flex-center"
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          style={{ padding: '0.85rem', background: 'var(--bg-secondary)', cursor: 'pointer', border: 'none' }}
+        >
+          <Menu size={20} color="var(--text-primary)" />
+        </button>
+        <div className="relative w-full" style={{ maxWidth: '400px' }}>
+          <Search size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
         <input
           type="text"
           placeholder="Search monitor data, locations..."
@@ -18,9 +26,10 @@ const Header = ({
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
+        </div>
       </div>
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <div className="header-actions">
         <button
           onClick={toggleTheme}
           className="glass-card"

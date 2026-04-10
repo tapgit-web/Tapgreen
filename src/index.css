@@ -80,7 +80,14 @@ body {
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
   border-radius: 1.5rem;
-  transition: var(--transition);
+  transition: background-color 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+@media (min-width: 769px) {
+  .resizable-card {
+    resize: both;
+    overflow: auto;
+  }
 }
 
 .glass-card:hover {
@@ -181,6 +188,12 @@ header {
   margin-bottom: 3.5rem;
 }
 
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
 /* Search Bar Styling */
 .search-input {
   width: 100%;
@@ -224,4 +237,142 @@ header {
 .nav-item:hover:not(.active) {
   background: var(--bg-tertiary);
   color: var(--text-primary);
+}
+
+/* =========================================================================
+   Responsive Grid & Utility Classes
+   ========================================================================= */
+
+/* Grid Layouts */
+.grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; margin-bottom: 2rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-bottom: 2rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
+.grid-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; }
+.grid-1-2 { display: grid; grid-template-columns: 1fr 2fr; gap: 1.5rem; }
+.grid-auto-fill { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 1rem; }
+.grid-auto-fill-lg { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr)); gap: 1rem; }
+
+/* Flexbox Layouts */
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-end { display: flex; justify-content: flex-end; align-items: center; }
+.flex-center { display: flex; justify-content: center; align-items: center; }
+.flex-align-center { display: flex; align-items: center; }
+.flex-align-start { display: flex; align-items: flex-start; }
+.flex-align-end { display: flex; align-items: flex-end; }
+
+.gap-05 { gap: 0.5rem; }
+.gap-1 { gap: 1rem; }
+.gap-15 { gap: 1.5rem; }
+.gap-2 { gap: 2rem; }
+
+/* Text Utilities */
+.text-xs { font-size: 0.7rem; }
+.text-sm { font-size: 0.8rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.1rem; }
+.text-xl { font-size: 1.5rem; }
+.text-2xl { font-size: 2rem; }
+
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-accent { color: var(--color-accent); }
+.text-danger { color: var(--color-danger); }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.uppercase { text-transform: uppercase; }
+.m-0 { margin: 0; }
+.mt-05 { margin-top: 0.25rem; }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mb-05 { margin-bottom: 0.5rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-15 { margin-bottom: 1.5rem; }
+.mb-2 { margin-bottom: 2rem; }
+
+/* Status Badges */
+.badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.badge-success { background: rgba(74, 222, 128, 0.1); color: var(--color-primary); }
+.badge-warning { background: rgba(245, 158, 11, 0.1); color: var(--color-accent); }
+.badge-danger { background: rgba(239, 68, 68, 0.1); color: var(--color-danger); }
+.badge-neutral { background: rgba(255, 255, 255, 0.05); color: var(--text-secondary); }
+
+/* Common Structural elements usually inline */
+.page-header { margin-bottom: 2rem; }
+.page-title { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+.page-subtitle { color: var(--text-secondary); }
+.card-padding { padding: 1.5rem; }
+.card-padding-lg { padding: 2rem; }
+.card-padding-sm { padding: 1.25rem; }
+.chart-container-sm { height: 220px; width: 100%; }
+.chart-container-md { height: 250px; width: 100%; }
+.chart-container-lg { height: 300px; width: 100%; }
+
+/* Layout utilities */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.br-lg { border-radius: 1rem; }
+.br-md { border-radius: 0.75rem; }
+.br-full { border-radius: 50%; }
+.bg-transparent-02 { background: rgba(255,255,255,0.02); }
+.bg-transparent-05 { background: rgba(255,255,255,0.05); }
+
+/* =========================================================================
+   Responsive Breakpoints
+   ========================================================================= */
+
+.mobile-nav-toggle { display: none; }
+
+@media (max-width: 1400px) {
+  .grid-6 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2-1 { grid-template-columns: 1.5fr 1fr; }
+}
+
+@media (max-width: 1200px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-2 { gap: 1rem; }
+}
+
+@media (max-width: 992px) {
+  .grid-2-1, .grid-1-2 { grid-template-columns: 1fr; gap: 1rem; }
+  .grid-6 { grid-template-columns: repeat(2, 1fr); }
+  main { padding: 1.5rem; }
+  header { margin-bottom: 2rem; flex-direction: column; align-items: stretch; gap: 1rem; }
+  .search-input { width: 100%; }
+}
+
+@media (max-width: 768px) {
+  html { font-size: 14px; }
+  main { padding: 1rem; }
+  .mobile-nav-toggle { display: flex; }
+  .grid-6, .grid-4, .grid-3, .grid-2, .grid-2-1, .grid-1-2 { grid-template-columns: 1fr; }
+  .flex-between { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .flex-between.mobile-row { flex-direction: row; align-items: center; } /* Keep row if specified */
+  aside { transform: translateX(-100%); position: fixed; z-index: 1000; }
+  .dashboard-container.sidebar-open aside { transform: translateX(0); }
+  .glass-card { border-radius: 1rem; }
+  .page-title { font-size: 1.5rem; }
+  .page-subtitle { font-size: 0.85rem; }
+  .header-actions { justify-content: space-between; width: 100%; }
+}
+
+@media (max-width: 480px) {
+  html { font-size: 12px; }
+  main { padding: 0.75rem; }
 }

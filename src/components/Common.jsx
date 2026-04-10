@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 export const StatCard = ({ title, value, change, icon: Icon, color, subtitle }) => (
-  <div className="glass-card" style={{ padding: '1.5rem' }}>
+  <div className="glass-card card-padding-sm">
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
       <div style={{ width: 44, height: 44, background: `${color}15`, borderRadius: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <Icon size={24} color={color} />
@@ -63,7 +63,7 @@ export const ThresholdSlider = ({ label, value, unit, onChange, color }) => (
 );
 
 export const TelemetryCard = ({ label, value, unit }) => (
-  <div className="glass-card" style={{ padding: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+  <div className="glass-card card-padding-sm" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
     <div>
       <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.25rem' }}>{label}</p>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>

@@ -26,15 +26,10 @@ const Login = ({ onLogin, users }) => {
   };
 
   return (
-    <div style={{
+    <div className="flex-center relative overflow-hidden" style={{
       minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
       background: 'var(--bg-primary)',
-      padding: '2rem',
-      position: 'relative',
-      overflow: 'hidden'
+      padding: '2rem'
     }}>
       <div style={{
         position: 'absolute',
@@ -50,16 +45,15 @@ const Login = ({ onLogin, users }) => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="glass-card"
+        className="glass-card relative"
         style={{
           width: '100%',
           maxWidth: '450px',
           padding: '3rem',
-          position: 'relative',
           zIndex: 1
         }}
       >
-        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+        <div className="text-center mb-25">
           <div style={{
             width: 80,
             height: 80,
@@ -71,7 +65,7 @@ const Login = ({ onLogin, users }) => {
             <img src={logo} alt="TAP Green Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
           <h1 className="gradient-text" style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>TAP Green</h1>
-          <p style={{ color: 'var(--text-secondary)' }}>NetZero Intelligence Gateway</p>
+          <p className="text-secondary">NetZero Intelligence Gateway</p>
         </div>
 
         {error && (
@@ -96,10 +90,10 @@ const Login = ({ onLogin, users }) => {
           </motion.div>
         )}
 
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', marginLeft: '0.25rem' }}>Corporate Email</label>
-            <div style={{ position: 'relative' }}>
+        <form onSubmit={handleSubmit} className="flex-col gap-15">
+          <div className="flex-col gap-05">
+            <label className="text-sm font-semibold text-secondary" style={{ marginLeft: '0.25rem' }}>Corporate Email</label>
+            <div className="relative">
               <Mail size={18} style={{ position: 'absolute', left: '1.25rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
               <input
                 type="email"
@@ -113,9 +107,9 @@ const Login = ({ onLogin, users }) => {
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', marginLeft: '0.25rem' }}>Secret Password</label>
-            <div style={{ position: 'relative' }}>
+          <div className="flex-col gap-05">
+            <label className="text-sm font-semibold text-secondary" style={{ marginLeft: '0.25rem' }}>Secret Password</label>
+            <div className="relative">
               <Lock size={18} style={{ position: 'absolute', left: '1.25rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
               <input
                 type="password"
@@ -129,7 +123,7 @@ const Login = ({ onLogin, users }) => {
             </div>
           </div>
 
-          <button type="submit" className="btn-primary" style={{ width: '100%', height: '54px', justifyContent: 'center', fontSize: '1.1rem', marginTop: '1rem' }}>
+          <button type="submit" className="btn-primary flex-center mt-1" style={{ width: '100%', height: '54px', fontSize: '1.1rem' }}>
             Secure Sign In <ArrowRight size={20} />
           </button>
         </form>

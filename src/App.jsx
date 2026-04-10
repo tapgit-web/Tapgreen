@@ -29,7 +29,7 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedMachine, setSelectedMachine] = useState(null);
   const [theme, setTheme] = useState('light');
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   
   // States initialized from JSON
   const [locationData, setLocationData] = useState(db.locations);
@@ -180,7 +180,7 @@ const App = () => {
   }
 
   return (
-    <div className="dashboard-container">
+    <div className={`dashboard-container ${isSidebarOpen ? 'sidebar-open' : ''}`}>
       <Sidebar 
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
@@ -197,6 +197,8 @@ const App = () => {
           alerts={alerts}
           onLogout={handleLogout}
           userRole={user.role}
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
         />
 
         <AnimatePresence mode="wait">

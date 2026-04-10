@@ -23,15 +23,15 @@ const LocationsView = ({
       exit={{ opacity: 0, scale: 1.02 }}
     >
       <div key="unit-view">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', marginBottom: '2.5rem' }}>
+        <div className="flex-between flex-align-end mb-25">
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-primary)', marginBottom: '0.5rem' }}>
+            <div className="flex-align-center gap-05 text-primary mb-05">
               <Activity size={18} />
-              <span style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>Local Node Monitoring</span>
+              <span className="text-sm font-extrabold uppercase" style={{ letterSpacing: '1px' }}>Local Node Monitoring</span>
             </div>
-            <h1 style={{ margin: 0 }}>{selectedLocation.name}</h1>
+            <h1 className="m-0">{selectedLocation.name}</h1>
           </div>
-          <div style={{ display: 'flex', gap: '1rem' }}>
+          <div className="flex gap-1">
             <div className="glass-card" style={{ padding: '0.5rem 1rem', background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.2)' }}>
               <span style={{ color: 'var(--color-accent)', fontWeight: 700 }}>{calculateLocationCarbon(selectedLocation).total} kg CO2e</span>
             </div>
@@ -49,54 +49,54 @@ const LocationsView = ({
         </div>
 
         {/* Location Overview Section */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', marginBottom: '2.5rem' }}>
-          <div className="glass-card" style={{ padding: '1.5rem', background: 'var(--bg-secondary)' }}>
-            <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Overall Efficiency</p>
-            <div style={{ display: 'flex', alignItems: 'end', gap: '0.5rem' }}>
+        <div className="grid-4 mb-25">
+          <div className="glass-card card-padding bg-transparent-02">
+            <p className="text-xs text-muted m-0 mb-05">Overall Efficiency</p>
+            <div className="flex flex-align-end gap-05">
               <span style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-primary)' }}>{selectedLocation.efficiency}%</span>
-              <span style={{ fontSize: '0.8rem', color: 'var(--color-primary)', opacity: 0.6, marginBottom: '0.3rem' }}>Optimal</span>
+              <span className="text-sm text-primary" style={{ opacity: 0.6, marginBottom: '0.3rem' }}>Optimal</span>
             </div>
           </div>
-          <div className="glass-card" style={{ padding: '1.5rem', background: 'var(--bg-secondary)' }}>
-            <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Total Units</p>
+          <div className="glass-card card-padding bg-transparent-02">
+            <p className="text-xs text-muted m-0 mb-05">Total Units</p>
             <span style={{ fontSize: '1.75rem', fontWeight: 800 }}>{selectedLocation.units.length}</span>
-            <span style={{ marginLeft: '0.5rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Operational</span>
+            <span className="text-sm text-muted" style={{ marginLeft: '0.5rem' }}>Operational</span>
           </div>
-          <div className="glass-card" style={{ padding: '1.5rem', background: 'var(--bg-secondary)' }}>
-            <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Machine Count</p>
+          <div className="glass-card card-padding bg-transparent-02">
+            <p className="text-xs text-muted m-0 mb-05">Machine Count</p>
             <span style={{ fontSize: '1.75rem', fontWeight: 800 }}>
               {selectedLocation.units.reduce((acc, unit) => acc + unit.machines.length, 0)}
             </span>
-            <span style={{ marginLeft: '0.5rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Nodes</span>
+            <span className="text-sm text-muted" style={{ marginLeft: '0.5rem' }}>Nodes</span>
           </div>
-          <div className="glass-card" style={{ padding: '1.5rem', background: 'var(--bg-secondary)' }}>
-            <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Location Energy</p>
+          <div className="glass-card card-padding bg-transparent-02">
+            <p className="text-xs text-muted m-0 mb-05">Location Energy</p>
             <span style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-secondary)' }}>
               {(selectedLocation.units.reduce((acc, unit) => acc + unit.machines.reduce((m_acc, m) => m_acc + m.energy, 0), 0) / 1000).toFixed(1)}
             </span>
-            <span style={{ marginLeft: '0.5rem', fontSize: '1rem', fontWeight: 600 }}>MWh</span>
+            <span className="text-base font-semibold" style={{ marginLeft: '0.5rem' }}>MWh</span>
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '1.5rem' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <div className="grid-2-1 gap-15" style={{ gridTemplateColumns: '1.2fr 1fr' }}>
+          <div className="flex-col gap-15">
             {selectedLocation.units.map(unit => (
-              <div key={unit.id} className="glass-card" style={{ padding: '1.5rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.75rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <div key={unit.id} className="glass-card card-padding">
+                <div className="flex-between mb-15 pb-1" style={{ borderBottom: '1px solid var(--glass-border)' }}>
+                  <div className="flex-align-center gap-05">
                     <Activity size={20} color="var(--color-primary)" />
-                    <h3 style={{ margin: 0 }}>{unit.name}</h3>
+                    <h3 className="m-0">{unit.name}</h3>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ textAlign: 'right' }}>
+                  <div className="flex-align-center gap-1">
+                    <div className="text-right">
                       <p style={{ margin: 0, fontSize: '0.65rem', color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase' }}>Emissions</p>
                       <p style={{ margin: 0, fontSize: '0.9rem', fontWeight: 800, color: 'var(--color-primary)' }}>
                         {calculateUnitCarbon(unit)} kg CO2e
                       </p>
                     </div>
                     <div style={{ width: 1, height: '24px', background: 'var(--glass-border)' }}></div>
-                    <div style={{ textAlign: 'right' }}>
-                      <p style={{ margin: 0, fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Consumpt.</p>
+                    <div className="text-right">
+                      <p className="m-0 text-xs text-muted uppercase">Consumpt.</p>
                       <p style={{ margin: 0, fontSize: '0.9rem', fontWeight: 700, color: 'var(--color-secondary)' }}>
                         {unit.machines.reduce((acc, m) => acc + m.energy, 0) || 0} kWh
                       </p>
@@ -111,7 +111,7 @@ const LocationsView = ({
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div className="flex-col gap-1">
                   {unit.machines.map(m => (
                     <div key={m.id}
                       onClick={() => setSelectedMachine(m)}
@@ -136,9 +136,9 @@ const LocationsView = ({
                           color: m.status === 'Active' ? 'var(--color-primary)' : 'var(--color-accent)'
                         }}>{m.status}</span>
                       </div>
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
+                      <div className="grid-3 gap-1">
                         <div>
-                          <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', margin: '0 0 0.1rem 0' }}>Type</p>
+                          <p className="text-xs text-muted m-0 mb-05">Type</p>
                           <p style={{ margin: 0, fontSize: '0.8rem', fontWeight: 600 }}>{m.energyType}</p>
                         </div>
                         <div>
@@ -168,10 +168,10 @@ const LocationsView = ({
             ))}
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <div className="glass-card" style={{ padding: '1.5rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-                <h3 style={{ margin: 0 }}>Carbon Footprint Breakdown</h3>
+          <div className="flex-col gap-15">
+            <div className="glass-card card-padding">
+              <div className="flex-between mb-15">
+                <h3 className="m-0">Carbon Footprint Breakdown</h3>
                 <Leaf size={20} color="var(--color-primary)" />
               </div>
 
@@ -247,11 +247,11 @@ const LocationsView = ({
         </div>
 
         {/* Transportation Section */}
-        <div style={{ marginTop: '2.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div className="mt-25">
+          <div className="flex-between mb-15">
+            <div className="flex-align-center gap-05">
               <Truck size={24} color="var(--color-primary)" />
-              <h2 style={{ margin: 0 }}>Transportation Fleet</h2>
+              <h2 className="m-0">Transportation Fleet</h2>
             </div>
             <div className="glass-card" style={{ padding: '0.5rem 1rem', background: 'rgba(167, 139, 250, 0.1)', border: '1px solid rgba(167, 139, 250, 0.2)' }}>
               <span style={{ color: '#A78BFA', fontWeight: 700, fontSize: '0.9rem' }}>

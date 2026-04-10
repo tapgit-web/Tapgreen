@@ -10,11 +10,11 @@ const Strategy = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
     >
-      <h1 style={{ marginBottom: '1.5rem' }}>NetZero 2050 Roadmap</h1>
-      <div className="glass-card" style={{ padding: '2rem', marginBottom: '2rem' }}>
+      <h1 className="mb-15">NetZero 2050 Roadmap</h1>
+      <div className="glass-card card-padding-lg mb-2">
         <h3>Strategic Milestones</h3>
-        <div style={{ position: 'relative', paddingLeft: '2rem', marginTop: '2rem' }}>
-          <div style={{ position: 'absolute', left: 4, top: 0, bottom: 0, width: 2, background: 'var(--glass-border)' }}></div>
+        <div className="relative mt-2" style={{ paddingLeft: '2rem' }}>
+          <div className="absolute" style={{ left: 4, top: 0, bottom: 0, width: 2, background: 'var(--glass-border)' }}></div>
 
           <TimelineItem year="2024" title="Baseline Audit" desc="Complete comprehensive audit of all scope 1, 2, and 3 emissions." status="Complete" />
           <TimelineItem year="2026" title="Energy Transition" desc="Switch 40% of global operations to 100% renewable sources." status="In Progress" />

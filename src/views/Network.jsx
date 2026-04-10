@@ -13,21 +13,21 @@ const Network = ({ locationData }) => {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 1.02 }}
     >
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+      <div className="flex-between page-header mb-2">
         <div>
-          <h1 style={{ margin: 0 }}>Global Operational Network</h1>
-          <p style={{ color: 'var(--text-secondary)', marginTop: '0.25rem' }}>Site reliability and efficiency tracking across all regions</p>
+          <h1 className="m-0">Global Operational Network</h1>
+          <p className="text-secondary mt-05">Site reliability and efficiency tracking across all regions</p>
         </div>
-        <div style={{ display: 'flex', gap: '1rem' }}>
-          <div className="glass-card" style={{ padding: '0.75rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <div style={{ width: 12, height: 12, borderRadius: '50%', background: 'var(--color-primary)' }}></div>
+        <div className="flex gap-1">
+          <div className="glass-card flex-align-center" style={{ padding: '0.75rem 1.25rem', gap: '0.75rem' }}>
+            <div className="br-full" style={{ width: 12, height: 12, background: 'var(--color-primary)' }}></div>
             <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>12 Sites Online</span>
           </div>
           <button className="btn-primary" style={{ height: '44px' }}><MapPin size={18} /> Plot New Site</button>
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
+      <div className="grid-2">
         {locationData.map(loc => (
           <div
             key={loc.id}
@@ -42,8 +42,8 @@ const Network = ({ locationData }) => {
             onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = 'var(--color-primary)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = loc.status === 'Critical' ? 'var(--color-danger)' : 'var(--glass-border)'; }}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div className="flex-between mb-15">
+              <div className="flex-align-center gap-1">
                 <div style={{
                   width: 52,
                   height: 52,
@@ -56,14 +56,14 @@ const Network = ({ locationData }) => {
                   <MapPin size={28} color={loc.status === 'Optimal' ? 'var(--color-primary)' : loc.status === 'Warning' ? 'var(--color-secondary)' : 'var(--color-danger)'} />
                 </div>
                 <div>
-                  <h3 style={{ margin: 0 }}>{loc.name}</h3>
-                  <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.25rem' }}>
-                    <span style={{ fontSize: '0.75rem', padding: '0.1rem 0.4rem', borderRadius: '0.4rem', background: 'rgba(255,255,255,0.05)', color: 'var(--text-secondary)' }}>Region: South Asia</span>
-                    <span style={{ fontSize: '0.75rem', padding: '0.1rem 0.4rem', borderRadius: '0.4rem', background: 'rgba(255,255,255,0.05)', color: 'var(--text-secondary)' }}>Hub: Logistics</span>
+                  <h3 className="m-0">{loc.name}</h3>
+                  <div className="flex gap-05 mt-05">
+                    <span className="badge badge-neutral text-xs">Region: South Asia</span>
+                    <span className="badge badge-neutral text-xs">Hub: Logistics</span>
                   </div>
                 </div>
               </div>
-              <div style={{ textAlign: 'right' }}>
+              <div className="text-right">
                 <div style={{
                   padding: '0.3rem 0.75rem',
                   borderRadius: '2rem',
@@ -74,42 +74,42 @@ const Network = ({ locationData }) => {
                 }}>
                   {loc.status}
                 </div>
-                <p style={{ margin: '0.4rem 0 0 0', fontSize: '0.75rem', color: 'var(--text-muted)' }}>Uptime: 99.98%</p>
+                <p className="text-xs text-muted mt-05 m-0">Uptime: 99.98%</p>
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
-              <div style={{ background: 'rgba(255,255,255,0.02)', padding: '1rem', borderRadius: '1rem', border: '1px solid var(--glass-border)' }}>
-                <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>Efficiency</p>
-                <p style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0, color: 'var(--color-primary)' }}>{loc.efficiency}%</p>
+            <div className="grid-4 mb-15">
+              <div className="bg-transparent-02 br-lg" style={{ padding: '1rem', border: '1px solid var(--glass-border)' }}>
+                <p className="text-xs text-muted mb-05 m-0">Efficiency</p>
+                <p className="text-lg font-extrabold text-primary m-0">{loc.efficiency}%</p>
               </div>
-              <div style={{ background: 'rgba(255,255,255,0.02)', padding: '1rem', borderRadius: '1rem', border: '1px solid var(--glass-border)' }}>
-                <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>Units / Nodes</p>
-                <p style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0 }}>
+              <div className="bg-transparent-02 br-lg" style={{ padding: '1rem', border: '1px solid var(--glass-border)' }}>
+                <p className="text-xs text-muted mb-05 m-0">Units / Nodes</p>
+                <p className="text-lg font-extrabold m-0">
                   {loc.units.length} / {loc.units.reduce((acc, unit) => acc + unit.machines.length, 0)}
                 </p>
               </div>
-              <div style={{ background: 'rgba(255,255,255,0.02)', padding: '1rem', borderRadius: '1rem', border: '1px solid var(--glass-border)' }}>
-                <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>Energy Total</p>
-                <p style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0, color: 'var(--color-secondary)' }}>
+              <div className="bg-transparent-02 br-lg" style={{ padding: '1rem', border: '1px solid var(--glass-border)' }}>
+                <p className="text-xs text-muted mb-05 m-0">Energy Total</p>
+                <p className="text-lg font-extrabold text-secondary m-0">
                   {(loc.units.reduce((acc, unit) => acc + unit.machines.reduce((m_acc, m) => m_acc + m.energy, 0), 0) / 1000).toFixed(1)} MWh
                 </p>
               </div>
-              <div style={{ background: 'rgba(255,255,255,0.02)', padding: '1rem', borderRadius: '1rem', border: '1px solid var(--glass-border)' }}>
-                <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>Fleets</p>
-                <p style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0 }}>{loc.vehicles.length}</p>
+              <div className="bg-transparent-02 br-lg" style={{ padding: '1rem', border: '1px solid var(--glass-border)' }}>
+                <p className="text-xs text-muted mb-05 m-0">Fleets</p>
+                <p className="text-lg font-extrabold m-0">{loc.vehicles.length}</p>
               </div>
             </div>
 
-            <div style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginRight: '0.5rem' }}>Infrastructure Mix:</span>
+            <div className="flex-between" style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '1.25rem' }}>
+              <div className="flex-align-center gap-05">
+                <span className="text-xs text-muted uppercase" style={{ marginRight: '0.5rem' }}>Infrastructure Mix:</span>
                 <Truck size={16} color="var(--color-primary)" style={{ opacity: 0.6 }} />
                 <Activity size={16} color="var(--color-secondary)" style={{ opacity: 0.6 }} />
                 <Zap size={16} color="var(--color-accent)" style={{ opacity: 0.6 }} />
-                <div style={{ display: 'flex', gap: '0.25rem', marginLeft: '0.5rem' }}>
+                <div className="flex" style={{ gap: '0.25rem', marginLeft: '0.5rem' }}>
                   {Array.from(new Set(loc.units.flatMap(u => u.machines.map(m => m.energyType)))).map(type => (
-                    <span key={type} style={{ fontSize: '0.6rem', padding: '0.1rem 0.4rem', borderRadius: '0.4rem', background: 'rgba(255,255,255,0.03)', color: 'var(--text-muted)', border: '1px solid var(--glass-border)' }}>{type}</span>
+                    <span key={type} className="badge badge-neutral text-xs" style={{ border: '1px solid var(--glass-border)' }}>{type}</span>
                   ))}
                 </div>
               </div>

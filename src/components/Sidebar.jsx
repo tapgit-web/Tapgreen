@@ -20,20 +20,14 @@ const Sidebar = ({
   ];
 
   return (
-    <aside style={{
-      width: isSidebarOpen ? '280px' : '88px',
-      borderRight: '1px solid var(--glass-border)',
-      padding: '2rem 1rem',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '2rem',
-      background: 'var(--bg-secondary)',
-      transition: 'var(--transition)',
-      position: 'sticky',
-      top: 0,
-      height: '100vh',
-      overflow: 'hidden'
-    }}>
+    <aside 
+      className={isSidebarOpen ? 'open' : 'closed'}
+      style={{
+        width: isSidebarOpen ? '280px' : '88px',
+        padding: '2rem 1rem',
+        gap: '2rem'
+      }}
+    >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: isSidebarOpen ? 'space-between' : 'center', marginBottom: '1rem', width: '100%' }}>
         {isSidebarOpen && (
           <motion.div

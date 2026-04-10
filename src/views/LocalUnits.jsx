@@ -11,25 +11,25 @@ const LocalUnits = ({ location, setSelectedMachine, calculateMachineCarbon }) =>
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
     >
-      <div style={{ marginBottom: '2rem' }}>
-        <h1 style={{ margin: 0 }}>Operational Units</h1>
-        <p style={{ color: 'var(--text-secondary)' }}>Detailed node monitoring for {location.name}</p>
+      <div className="mb-2 page-header">
+        <h1 className="m-0 page-title">Operational Units</h1>
+        <p className="page-subtitle">Detailed node monitoring for {location.name}</p>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div className="flex-col gap-2">
         {location.units.map(unit => (
-          <div key={unit.id} className="glass-card" style={{ padding: '2rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: '1rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: 48, height: 48, background: 'rgba(74, 222, 128, 0.1)', borderRadius: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div key={unit.id} className="glass-card card-padding-lg">
+            <div className="flex-between mb-2 pb-1" style={{ borderBottom: '1px solid var(--glass-border)' }}>
+              <div className="flex-align-center gap-1">
+                <div className="br-md flex-center" style={{ width: 48, height: 48, background: 'rgba(74, 222, 128, 0.1)' }}>
                   <Activity color="var(--color-primary)" />
                 </div>
                 <div>
-                  <h3 style={{ margin: 0 }}>{unit.name}</h3>
-                  <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--text-muted)' }}>{unit.machines.length} Total Nodes</p>
+                  <h3 className="m-0">{unit.name}</h3>
+                  <p className="m-0 text-sm text-muted">{unit.machines.length} Total Nodes</p>
                 </div>
               </div>
-              <div style={{ textAlign: 'right' }}>
+              <div className="text-right">
                 <span style={{ 
                   padding: '0.4rem 1rem', 
                   borderRadius: '2rem', 
@@ -43,41 +43,41 @@ const LocalUnits = ({ location, setSelectedMachine, calculateMachineCarbon }) =>
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+            <div className="grid-3 gap-15">
               {unit.machines.map(m => (
                 <div key={m.id} 
                   onClick={() => setSelectedMachine(m)}
-                  className="glass-card" 
-                  style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.02)', cursor: 'pointer' }}
+                  className="glass-card card-padding bg-transparent-02" 
+                  style={{ cursor: 'pointer' }}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                    <h4 style={{ margin: 0 }}>{m.name}</h4>
+                  <div className="flex-between mb-15">
+                    <h4 className="m-0">{m.name}</h4>
                     <Zap size={18} color="var(--color-secondary)" />
                   </div>
                   
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Load Factor</span>
-                      <span style={{ fontSize: '0.85rem', fontWeight: 700 }}>{m.load}%</span>
+                  <div className="flex-col gap-1">
+                    <div className="flex-between">
+                      <span className="text-sm text-muted">Load Factor</span>
+                      <span className="text-sm font-bold">{m.load}%</span>
                     </div>
                     <div style={{ height: 6, background: 'rgba(255,255,255,0.05)', borderRadius: 3 }}>
                       <div style={{ width: `${m.load}%`, height: '100%', background: m.load > 90 ? 'var(--color-danger)' : 'var(--color-primary)', borderRadius: 3 }}></div>
                     </div>
                     
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '0.5rem' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <div className="grid-2 gap-1 mt-05">
+                      <div className="flex-align-center gap-05">
                         <Thermometer size={14} color="var(--color-accent)" />
-                        <span style={{ fontSize: '0.85rem' }}>{m.temp}°C</span>
+                        <span className="text-sm">{m.temp}°C</span>
                       </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <div className="flex-align-center gap-05">
                         <Cpu size={14} color="var(--color-secondary)" />
-                        <span style={{ fontSize: '0.85rem' }}>{m.energy} kWh</span>
+                        <span className="text-sm">{m.energy} kWh</span>
                       </div>
                     </div>
 
-                    <div style={{ marginTop: '0.5rem', background: 'rgba(74, 222, 128, 0.05)', padding: '0.6rem', borderRadius: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-primary)' }}>Emissions</span>
-                      <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--color-primary)' }}>{calculateMachineCarbon(m)}kg CO2e</span>
+                    <div className="flex-between mt-05 card-padding-sm" style={{ background: 'rgba(74, 222, 128, 0.05)', borderRadius: '0.5rem' }}>
+                      <span className="text-xs font-semibold text-primary">Emissions</span>
+                      <span className="text-sm font-extrabold text-primary">{calculateMachineCarbon(m)}kg CO2e</span>
                     </div>
                   </div>
                 </div>

@@ -20,12 +20,12 @@ const Dashboard = ({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
     >
-      <div style={{ marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Good Afternoon, Global Lead</h1>
-        <p style={{ color: 'var(--text-secondary)' }}>Welcome back to your NetZero monitoring command center.</p>
+      <div className="mb-2">
+        <h1 className="page-title">Good Afternoon, Global Lead</h1>
+        <p className="page-subtitle">Welcome back to your NetZero monitoring command center.</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '1rem', marginBottom: '2rem' }}>
+      <div className="grid-6">
         <StatCard title="Electricity" value="1.42 MWh" change="+12%" icon={Zap} color="var(--color-primary)" />
         <StatCard title="Natural Gas" value="842 m³" change="-4%" icon={Flame} color="var(--color-secondary)" />
         <StatCard title="Fuel Usage" value="2.1k L" change="+2%" icon={Droplet} color="var(--color-accent)" />
@@ -34,18 +34,18 @@ const Dashboard = ({
         <StatCard title="Carbon" value={`${(locationData.reduce((acc, loc) => acc + calculateLocationCarbon(loc).total, 0) / 1000).toFixed(2)}t`} change="-8%" icon={Leaf} color="var(--color-primary)" />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
-        <div className="glass-card" style={{ padding: '1.5rem', minHeight: '400px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+      <div className="grid-2-1">
+        <div className="glass-card resizable-card card-padding" style={{ minHeight: '400px' }}>
+          <div className="flex-between mb-15">
             <div>
-              <h3 style={{ margin: 0 }}>Energy Consumption Trends</h3>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Real-time usage across all primary sources.</p>
+              <h3 className="m-0">Energy Consumption Trends</h3>
+              <p className="text-sm text-secondary">Real-time usage across all primary sources.</p>
             </div>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <button className="btn-primary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem' }}>Export PDF</button>
+            <div className="flex gap-05">
+              <button className="btn-primary text-sm" style={{ padding: '0.4rem 0.8rem' }}>Export PDF</button>
             </div>
           </div>
-          <div style={{ width: '100%', height: '300px' }}>
+          <div className="chart-container-lg">
             <ResponsiveContainer>
               <LineChart data={energyData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--glass-border)" />
@@ -63,9 +63,9 @@ const Dashboard = ({
           </div>
         </div>
 
-        <div className="glass-card" style={{ padding: '1.5rem' }}>
-          <h3 style={{ marginBottom: '1.5rem' }}>Carbon Breakdown</h3>
-          <div style={{ width: '100%', height: '220px' }}>
+        <div className="glass-card resizable-card card-padding">
+          <h3 className="mb-15">Carbon Breakdown</h3>
+          <div className="chart-container-sm">
             <ResponsiveContainer>
               <PieChart>
                 <Pie
@@ -87,30 +87,30 @@ const Dashboard = ({
               </PieChart>
             </ResponsiveContainer>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '1rem' }}>
+          <div className="flex-col mt-1" style={{ gap: '0.75rem' }}>
             {pieData.map((item) => (
-              <div key={item.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: item.color }}></div>
-                  <span style={{ fontSize: '0.85rem' }}>{item.name}</span>
+              <div key={item.name} className="flex-between">
+                <div className="flex-align-center gap-05">
+                  <div className="br-full" style={{ width: 10, height: 10, background: item.color }}></div>
+                  <span className="text-sm">{item.name}</span>
                 </div>
-                <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>{item.value}%</span>
+                <span className="text-sm font-semibold">{item.value}%</span>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div style={{ marginTop: '2rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-          <h3 style={{ margin: 0 }}>Top Performing Locations</h3>
-          <button onClick={() => navigate('/network')} style={{ color: 'var(--color-primary)', background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.9rem' }}>View All Locations</button>
+      <div className="mt-2">
+        <div className="flex-between mb-1">
+          <h3 className="m-0">Top Performing Locations</h3>
+          <button className="text-primary text-sm" onClick={() => navigate('/network')} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>View All Locations</button>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+        <div className="grid-auto-fill">
           {locationData.slice(0, 4).map(loc => (
-            <div key={loc.id} onClick={() => navigate(`/locations/${loc.id}`)} className="glass-card" style={{ padding: '1.25rem', cursor: 'pointer' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1rem' }}>
-                <div style={{ width: 40, height: 40, background: 'rgba(255,255,255,0.05)', borderRadius: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div key={loc.id} onClick={() => navigate(`/locations/${loc.id}`)} className="glass-card card-padding-sm" style={{ cursor: 'pointer' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
+                <div className="bg-transparent-05 br-md flex-center" style={{ width: 40, height: 40 }}>
                   <MapPin size={20} />
                 </div>
                 <span style={{
@@ -124,10 +124,10 @@ const Dashboard = ({
                   {loc.status}
                 </span>
               </div>
-              <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1rem' }}>{loc.name}</h4>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>Efficiency: {loc.efficiency}%</p>
-                <p style={{ fontSize: '0.8rem', color: 'var(--color-primary)', fontWeight: 700, margin: 0 }}>{calculateLocationCarbon(loc).total} kg CO2e</p>
+              <h4 className="text-base m-0 mb-05">{loc.name}</h4>
+              <div className="flex-between mb-1">
+                <p className="text-sm text-secondary m-0">Efficiency: {loc.efficiency}%</p>
+                <p className="text-sm text-primary font-bold m-0">{calculateLocationCarbon(loc).total} kg CO2e</p>
               </div>
               <div style={{ height: 4, background: 'rgba(255,255,255,0.05)', borderRadius: 2 }}>
                 <div style={{ width: `${loc.efficiency}%`, height: '100%', background: loc.efficiency > 90 ? 'var(--color-primary)' : loc.efficiency > 70 ? 'var(--color-accent)' : 'var(--color-danger)', borderRadius: 2 }}></div>

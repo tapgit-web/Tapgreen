@@ -11,15 +11,15 @@ const Monitoring = ({ energyData }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -30 }}
     >
-      <h1 style={{ marginBottom: '2rem' }}>Sensor Telemetry</h1>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
+      <h1 className="mb-2 page-title">Sensor Telemetry</h1>
+      <div className="grid-2">
         <TelemetryCard label="Avg Power Factor" value="0.94" unit="cos phi" />
         <TelemetryCard label="Total Carbon Intensity" value="0.28" unit="kgCO2e/kWh" />
       </div>
 
-      <div className="glass-card" style={{ marginTop: '1.5rem', padding: '2rem' }}>
+      <div className="glass-card card-padding-lg mt-15">
         <h3>Real-time Load Balancing</h3>
-        <div style={{ width: '100%', height: '400px', marginTop: '1.5rem' }}>
+        <div className="w-full mt-15" style={{ height: '400px' }}>
           <ResponsiveContainer>
             <AreaChart data={energyData}>
               <defs>
