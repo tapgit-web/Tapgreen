@@ -78,7 +78,7 @@ const LocationsView = ({
           </div>
         </div>
 
-        <div className="grid-2-1 gap-15" style={{ gridTemplateColumns: '1.2fr 1fr' }}>
+        <div className="grid-2-1 gap-15">
           <div className="flex-col gap-15">
             {selectedLocation.units.map(unit => (
               <div key={unit.id} className="glass-card card-padding">
@@ -260,7 +260,7 @@ const LocationsView = ({
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
+          <div className="grid-4">
             {selectedLocation.vehicles.map(v => (
               <div key={v.id} className="glass-card" style={{ padding: '1.5rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1rem' }}>

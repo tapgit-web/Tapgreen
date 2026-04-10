@@ -39,21 +39,22 @@ const Login = ({ onLogin, users }) => {
         height: '400px',
         background: 'radial-gradient(circle, rgba(74, 222, 128, 0.1) 0%, transparent 70%)',
         opacity: 0.5,
-        filter: 'blur(60px)'
+        filter: 'blur(60px)',
+        pointerEvents: 'none'
       }}></div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="glass-card relative"
+        className="glass-card relative card-padding-lg"
         style={{
           width: '100%',
           maxWidth: '450px',
-          padding: '3rem',
-          zIndex: 1
+          zIndex: 1,
+          margin: '0 1rem'
         }}
       >
-        <div className="text-center mb-25">
+        <div className="text-center mb-2">
           <div style={{
             width: 80,
             height: 80,
