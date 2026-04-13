@@ -362,7 +362,8 @@ header {
   html { font-size: 14px; }
   main { padding: 1rem; }
   .mobile-nav-toggle { display: flex; }
-  .grid-6, .grid-4, .grid-3, .grid-2, .grid-2-1, .grid-1-2 { grid-template-columns: 1fr; }
+  .grid-6, .grid-4, .grid-3, .grid-auto-fill { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .grid-2, .grid-2-1, .grid-1-2, .grid-auto-fill-lg { grid-template-columns: 1fr; }
   .flex-between { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .flex-between.mobile-row { flex-direction: row; align-items: center; } /* Keep row if specified */
   aside { transform: translateX(-100%); position: fixed; z-index: 1000; }

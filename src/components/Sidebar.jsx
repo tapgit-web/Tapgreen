@@ -10,6 +10,12 @@ import logo from '../assets/logo.png';
 const Sidebar = ({ 
   isSidebarOpen, setIsSidebarOpen, locationData, userRole 
 }) => {
+  const handleNavClick = () => {
+    if (window.innerWidth <= 768) {
+      setIsSidebarOpen(false);
+    }
+  };
+
   const adminItems = [
     { id: 'dashboard', icon: LayoutDashboard, label: 'Overview', path: '/dashboard' },
     { id: 'monitoring', icon: Activity, label: 'Telemetry', path: '/monitoring' },
@@ -69,6 +75,7 @@ const Sidebar = ({
                 <NavLink
                   key={item.id}
                   to={item.path}
+                  onClick={handleNavClick}
                   className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                   title={!isSidebarOpen ? item.label : ''}
                   style={{
@@ -96,6 +103,7 @@ const Sidebar = ({
                         <NavLink
                             to={`/portal/${loc.id}`}
                             end
+                            onClick={handleNavClick}
                             className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                             style={{ textDecoration: 'none', justifyContent: isSidebarOpen ? 'flex-start' : 'center', padding: isSidebarOpen ? '1rem' : '1rem 0' }}
                         >
@@ -109,6 +117,7 @@ const Sidebar = ({
                         
                         <NavLink
                             to={`/portal/${loc.id}/units`}
+                            onClick={handleNavClick}
                             className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                             style={{ textDecoration: 'none', justifyContent: isSidebarOpen ? 'flex-start' : 'center', padding: isSidebarOpen ? '1rem' : '1rem 0' }}
                         >
@@ -118,6 +127,7 @@ const Sidebar = ({
                         
                         <NavLink
                             to={`/portal/${loc.id}/fleet`}
+                            onClick={handleNavClick}
                             className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                             style={{ textDecoration: 'none', justifyContent: isSidebarOpen ? 'flex-start' : 'center', padding: isSidebarOpen ? '1rem' : '1rem 0' }}
                         >
@@ -127,6 +137,7 @@ const Sidebar = ({
 
                         <NavLink
                             to={`/portal/${loc.id}/settings`}
+                            onClick={handleNavClick}
                             className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                             style={{ textDecoration: 'none', justifyContent: isSidebarOpen ? 'flex-start' : 'center', padding: isSidebarOpen ? '1rem' : '1rem 0' }}
                         >
@@ -145,6 +156,7 @@ const Sidebar = ({
                 <NavLink
                     key={loc.id}
                     to={`/locations/${loc.id}`}
+                    onClick={handleNavClick}
                     className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                     title={!isSidebarOpen ? loc.name : ''}
                     style={{
